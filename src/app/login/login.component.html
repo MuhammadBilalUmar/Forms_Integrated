@@ -1,0 +1,113 @@
+<div class="row justify-content-center mx-0">
+  <div class="col-md-12 col-12 pt-100">
+    <div class="text-center" > 
+<!-- main app container -->
+<div class="card m-3">
+  <h5 class="card-header text-center">Contact Us</h5>
+  <div class="card-body">
+    <form *ngIf="ContactUsForm" [formGroup]="ContactUsForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label> Name</label>
+        <input
+        maxlength="50"
+        minlength="3"
+          type="text"
+          formControlName="Name"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.Name.errors }"
+        />
+        <div *ngIf="submitted && f.Name.errors" class="invalid-feedback">
+          <div *ngIf="f.Name.errors.required">Name is required</div>
+          <div *ngIf="f.Name.errors.minlength">Name should be least 3 characters long</div>
+              <div *ngIf="f.Name.errors.maxlength">Less than 50 characters long</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" maxlength="300"
+        minlength="3" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.minlength">Email should be least 3 characters long</div>
+            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+        </div>
+    </div>
+    <div class="form-group">
+      <label>Phone</label>
+      <input
+        type="number"
+        maxlength="50"
+        minlength="3"
+        formControlName="Phone"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.Phone.errors }"
+      />
+      <div *ngIf="submitted && f.Phone.errors" class="invalid-feedback">
+        <div *ngIf="f.Phone.errors.required">Phone is required</div>
+        <div *ngIf="f.Phone.errors.minlength">Email should be least 3 characters long</div>
+      </div>
+    </div>
+      <div class="form-group">
+        <label>Subject</label>
+        <input
+        maxlength="50"
+        minlength="3"
+          type="text"
+          formControlName="Subject"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.Subject.errors }"
+        />
+        <div *ngIf="submitted && f.Subject.errors" class="invalid-feedback">
+          <div *ngIf="f.Subject.errors.required">Subject is required</div>
+          <div *ngIf="f.Subject.errors.minlength">Subject should be least 3 characters long</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Body</label>
+        <textarea
+        maxlength="1500"
+        minlength="3"
+          type="text"
+          formControlName="Body"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.Body.errors }"
+        ></textarea>
+        <div *ngIf="submitted && f.Body.errors" class="invalid-feedback">
+          <div *ngIf="f.Body.errors.required">Body is required</div>
+          <div *ngIf="f.Body.errors.minlength">Body should be least 3 characters long</div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col">
+          <label>Attachment</label>
+          <input
+            type="file"
+            name='files[]' multiple
+            max-size="100000"
+            formControlName="Attachement"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.Attachement.errors }"
+          />
+          <div
+            *ngIf="submitted && f.Attachement.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.Attachement.errors.required">
+              Attachment is required
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button class="btn btn-secondary" type="reset" (click)="onReset()">
+          Cancel
+        </button>
+        <button class="btn btn-primary ml-1">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+  </div>
+  </div>
+</div>
