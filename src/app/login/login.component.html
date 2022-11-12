@@ -1,3 +1,4 @@
+<div class="col-6 mx-auto">
 <div class="row justify-content-center mx-0">
   <div class="col-md-12 col-12 pt-100">
     <div class="text-center" > 
@@ -5,7 +6,7 @@
 <div class="card m-3">
   <h5 class="card-header text-center">Contact Us</h5>
   <div class="card-body">
-    <form *ngIf="ContactUsForm" [formGroup]="ContactUsForm" (ngSubmit)="onSubmit()">
+    <form *ngIf="ContactUsForm" [formGroup]="ContactUsForm" (ngSubmit)="onSubmit()" method="post">
       <div class="form-group">
         <label> Name</label>
         <input
@@ -98,7 +99,15 @@
           </div>
         </div>
       </div>
-
+      <input
+      type="file"
+      formControlName="Attachment"
+      name="files[]"
+      multiple
+      max-size="100000"
+      class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.Attachment.errors }"
+    />
       <div class="text-center">
         <button class="btn btn-secondary" type="reset" (click)="onReset()">
           Cancel
@@ -110,4 +119,4 @@
 </div>
   </div>
   </div>
-</div>
+</div></div>
